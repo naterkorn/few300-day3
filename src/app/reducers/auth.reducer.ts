@@ -1,5 +1,5 @@
 import { createReducer } from '@ngrx/store';
-import { Action } from 'rxjs/internal/scheduler/Action';
+
 
 export interface AuthState {
   userName: string;
@@ -11,6 +11,11 @@ const initialState: AuthState = {
   isAdmin: false
 };
 
-export function reducer(state: AuthState = initialState, action: Action) {
-  return reducerFunction(state, action);
+const myreducer = createReducer(
+  initialState
+);
+
+export function reducer(state: AuthState = initialState, action: any) {
+  return myreducer(state, action);
 }
+
