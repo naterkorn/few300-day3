@@ -7,7 +7,6 @@ export const loadFriends = createAction(
   '[gift giving] load friends'
 );
 
-
 export const loadFriendsSucceeded = createAction(
   '[gift giving] load friends success',
   props<{ friends: FriendEntity[] }>()
@@ -31,4 +30,9 @@ export const addFriendSucceeded = createAction(
 export const addFriendFailed = createAction(
   '[gift giving] add friend failed',
   props<{ entity: FriendEntity, message: string }>()
+);
+
+export const setSelectedFriend = createAction(
+  '[gift-giving] set selected friend',
+  props<{ id: string }>()
 );

@@ -12,6 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { AdminModule } from './features/admin/admin.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,10 +25,15 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     BrowserModule,
     GiftGivingModule,
+    AdminModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([])
+    StoreDevtoolsModule.instrument({
+      maxAge: 50,
+      logOnly: true
+    }),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
